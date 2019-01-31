@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EyLocationsViewDlg" widgetVar="EyLocationsViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewEyLocationsTitle}" closeOnEscape="true">
+
+            <h:form id="EyLocationsViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{eyLocationsController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewEyLocationsLabel_id}"/>
+                        <h:outputText value="#{eyLocationsController.selected.id}" title="#{myBundle.ViewEyLocationsTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewEyLocationsLabel_name}"/>
+                        <h:outputText value="#{eyLocationsController.selected.name}" title="#{myBundle.ViewEyLocationsTitle_name}"/>
+
+                        <h:outputText value="#{myBundle.ViewEyLocationsLabel_status}"/>
+                        <h:outputText value="#{eyLocationsController.selected.status}" title="#{myBundle.ViewEyLocationsTitle_status}"/>
+
+                        <h:outputText value="#{myBundle.ViewEyLocationsLabel_phone}"/>
+                        <h:outputText value="#{eyLocationsController.selected.phone}" title="#{myBundle.ViewEyLocationsTitle_phone}"/>
+
+                        <h:outputText value="#{myBundle.ViewEyLocationsLabel_website}"/>
+                        <h:outputText value="#{eyLocationsController.selected.website}" title="#{myBundle.ViewEyLocationsTitle_website}"/>
+
+                        <h:outputText value="#{myBundle.ViewEyLocationsLabel_hasSmokeArea}"/>
+                        <h:outputText value="#{eyLocationsController.selected.hasSmokeArea}" title="#{myBundle.ViewEyLocationsTitle_hasSmokeArea}"/>
+
+                        <h:outputText value="#{myBundle.ViewEyLocationsLabel_serveShisha}"/>
+                        <h:outputText value="#{eyLocationsController.selected.serveShisha}" title="#{myBundle.ViewEyLocationsTitle_serveShisha}"/>
+
+                        <h:outputText value="#{myBundle.ViewEyLocationsLabel_priceRange}"/>
+                        <h:outputText value="#{eyLocationsController.selected.priceRange}" title="#{myBundle.ViewEyLocationsTitle_priceRange}"/>
+
+                        <h:outputText value="#{myBundle.ViewEyLocationsLabel_long1}"/>
+                        <h:outputText value="#{eyLocationsController.selected.long1}" title="#{myBundle.ViewEyLocationsTitle_long1}"/>
+
+                        <h:outputText value="#{myBundle.ViewEyLocationsLabel_lat}"/>
+                        <h:outputText value="#{eyLocationsController.selected.lat}" title="#{myBundle.ViewEyLocationsTitle_lat}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="PF('EyLocationsViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

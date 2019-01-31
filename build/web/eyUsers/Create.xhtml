@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EyUsersCreateDlg" widgetVar="EyUsersCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateEyUsersTitle}" closeOnEscape="true">
+
+            <h:form id="EyUsersCreateForm">
+
+                <h:panelGroup id="display" rendered="#{eyUsersController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateEyUsersLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{eyUsersController.selected.name}" title="#{myBundle.CreateEyUsersTitle_name}" required="true" requiredMessage="#{myBundle.CreateEyUsersRequiredMessage_name}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyUsersLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{eyUsersController.selected.password}" title="#{myBundle.CreateEyUsersTitle_password}" required="true" requiredMessage="#{myBundle.CreateEyUsersRequiredMessage_password}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyUsersLabel_userType}" for="userType" />
+                        <p:inputText id="userType" value="#{eyUsersController.selected.userType}" title="#{myBundle.CreateEyUsersTitle_userType}" required="true" requiredMessage="#{myBundle.CreateEyUsersRequiredMessage_userType}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyUsersLabel_userStatus}" for="userStatus" />
+                        <p:inputText id="userStatus" value="#{eyUsersController.selected.userStatus}" title="#{myBundle.CreateEyUsersTitle_userStatus}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{eyUsersController.saveNew}" value="#{myBundle.Save}" update="display,:EyUsersListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('EyUsersCreateDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="PF('EyUsersCreateDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

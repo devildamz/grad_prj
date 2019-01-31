@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="EyLocationsEditDlg" widgetVar="EyLocationsEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditEyLocationsTitle}" closeOnEscape="true">
+
+            <h:form id="EyLocationsEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{eyLocationsController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditEyLocationsLabel_id}" for="id" />
+                        <h:outputText id="id" value="#{eyLocationsController.selected.id}" />
+
+                        <p:outputLabel value="#{myBundle.EditEyLocationsLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{eyLocationsController.selected.name}" title="#{myBundle.EditEyLocationsTitle_name}" required="true" requiredMessage="#{myBundle.EditEyLocationsRequiredMessage_name}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{myBundle.EditEyLocationsLabel_status}" for="status" />
+                        <p:inputText id="status" value="#{eyLocationsController.selected.status}" title="#{myBundle.EditEyLocationsTitle_status}" required="true" requiredMessage="#{myBundle.EditEyLocationsRequiredMessage_status}"/>
+
+                        <p:outputLabel value="#{myBundle.EditEyLocationsLabel_phone}" for="phone" />
+                        <p:inputText id="phone" value="#{eyLocationsController.selected.phone}" title="#{myBundle.EditEyLocationsTitle_phone}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{myBundle.EditEyLocationsLabel_website}" for="website" />
+                        <p:inputText id="website" value="#{eyLocationsController.selected.website}" title="#{myBundle.EditEyLocationsTitle_website}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{myBundle.EditEyLocationsLabel_hasSmokeArea}" for="hasSmokeArea" />
+                        <p:inputText id="hasSmokeArea" value="#{eyLocationsController.selected.hasSmokeArea}" title="#{myBundle.EditEyLocationsTitle_hasSmokeArea}"/>
+
+                        <p:outputLabel value="#{myBundle.EditEyLocationsLabel_serveShisha}" for="serveShisha" />
+                        <p:inputText id="serveShisha" value="#{eyLocationsController.selected.serveShisha}" title="#{myBundle.EditEyLocationsTitle_serveShisha}"/>
+
+                        <p:outputLabel value="#{myBundle.EditEyLocationsLabel_priceRange}" for="priceRange" />
+                        <p:inputText id="priceRange" value="#{eyLocationsController.selected.priceRange}" title="#{myBundle.EditEyLocationsTitle_priceRange}"/>
+
+                        <p:outputLabel value="#{myBundle.EditEyLocationsLabel_long1}" for="long1" />
+                        <p:inputText id="long1" value="#{eyLocationsController.selected.long1}" title="#{myBundle.EditEyLocationsTitle_long1}"/>
+
+                        <p:outputLabel value="#{myBundle.EditEyLocationsLabel_lat}" for="lat" />
+                        <p:inputText id="lat" value="#{eyLocationsController.selected.lat}" title="#{myBundle.EditEyLocationsTitle_lat}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{eyLocationsController.save}" value="#{myBundle.Save}" update="display,:EyLocationsListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('EyLocationsEditDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="PF('EyLocationsEditDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

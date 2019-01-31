@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EyLocationsCreateDlg" widgetVar="EyLocationsCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateEyLocationsTitle}" closeOnEscape="true">
+
+            <h:form id="EyLocationsCreateForm">
+
+                <h:panelGroup id="display" rendered="#{eyLocationsController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateEyLocationsLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{eyLocationsController.selected.name}" title="#{myBundle.CreateEyLocationsTitle_name}" required="true" requiredMessage="#{myBundle.CreateEyLocationsRequiredMessage_name}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyLocationsLabel_status}" for="status" />
+                        <p:inputText id="status" value="#{eyLocationsController.selected.status}" title="#{myBundle.CreateEyLocationsTitle_status}" required="true" requiredMessage="#{myBundle.CreateEyLocationsRequiredMessage_status}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyLocationsLabel_phone}" for="phone" />
+                        <p:inputText id="phone" value="#{eyLocationsController.selected.phone}" title="#{myBundle.CreateEyLocationsTitle_phone}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyLocationsLabel_website}" for="website" />
+                        <p:inputText id="website" value="#{eyLocationsController.selected.website}" title="#{myBundle.CreateEyLocationsTitle_website}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyLocationsLabel_hasSmokeArea}" for="hasSmokeArea" />
+                        <p:inputText id="hasSmokeArea" value="#{eyLocationsController.selected.hasSmokeArea}" title="#{myBundle.CreateEyLocationsTitle_hasSmokeArea}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyLocationsLabel_serveShisha}" for="serveShisha" />
+                        <p:inputText id="serveShisha" value="#{eyLocationsController.selected.serveShisha}" title="#{myBundle.CreateEyLocationsTitle_serveShisha}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyLocationsLabel_priceRange}" for="priceRange" />
+                        <p:inputText id="priceRange" value="#{eyLocationsController.selected.priceRange}" title="#{myBundle.CreateEyLocationsTitle_priceRange}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyLocationsLabel_long1}" for="long1" />
+                        <p:inputText id="long1" value="#{eyLocationsController.selected.long1}" title="#{myBundle.CreateEyLocationsTitle_long1}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyLocationsLabel_lat}" for="lat" />
+                        <p:inputText id="lat" value="#{eyLocationsController.selected.lat}" title="#{myBundle.CreateEyLocationsTitle_lat}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{eyLocationsController.saveNew}" value="#{myBundle.Save}" update="display,:EyLocationsListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('EyLocationsCreateDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="PF('EyLocationsCreateDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
