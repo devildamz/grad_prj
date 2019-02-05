@@ -58,9 +58,10 @@ public class DomainDAOImpl extends JdbcAdapter implements DomainDAO {
             rs = pst.executeQuery();
             Doms = new ArrayList<>();
             DomainsVO Dom = new DomainsVO();
-            while (rs.next()) {
-                Dom.setId(rs.getInt("value"));
+            Dom.setId(rs.getInt("value"));
+            if (rs.next()) {
                 Dom.setValue(Dom.getValue());
+                Dom.setDomain_type(Dom.getDomain_type());
                 Doms.add(Dom);
             }
             if (!Doms.isEmpty()) {
